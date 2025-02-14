@@ -1,18 +1,18 @@
+/* Main app container */
 .App {
   text-align: center;
+  background-color: #e0d1b9;  /* Kraft paper background */
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
+/* Animation preferences */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Default React header styles - can be removed if not using */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,13 +21,10 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-primary); /* Ensure text uses --text-primary */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
+/* Logo spin animation - can be removed if not using */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +32,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Global typography styles */
+h1 {
+  color: var(--text-primary); /* Ensure text uses --text-primary */
+  font-size: 3rem;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
+}
+
+p {
+  color: var(--text-secondary); /* Change text color to --text-secondary */
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
+}
+
+:root {
+  /* Existing colors */
+  --kraft-bg: #e0d1b9;      /* Main background color */
+  --kraft-accent: #d0c1a9;  /* Secondary background color */
+  --text-primary: #19120b;  /* Very dark brown for headings */
+  --text-secondary: #555;   /* Medium gray for body text */
+  
+  /* Add modal-specific variables */
+  --modal-overlay: rgba(0, 0, 0, 0.75);
+  --modal-bg: var(--kraft-accent);  /* Using kraft accent color instead of white */
+  --modal-radius: 8px;
+  --modal-padding: 20px;
 }

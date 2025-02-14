@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Global theme variables - consider moving these to App.css if used across components */
+:root {
+  --kraft-bg: #e0d1b9;      /* Main background color */
+  --kraft-accent: #d0c1a9;  /* Secondary background color */
+  --text-primary: #fb1515;     /* Primary text color */
+  --text-secondary: #e90000;   /* Secondary text color */
+  
+  /* Add new variables for consistent spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+/* Component styles */
+.topfold {
+  font-family: Arial, sans-serif;
+  background-color: var(--kraft-bg);
+  color: var(--text-primary);
+  min-height: 110vh;
+  padding: var(--spacing-lg);
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--kraft-accent);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: calc(var(--spacing-md) * -1);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23d0c1a9' opacity='.25'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%23d0c1a9' opacity='.5'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23d0c1a9'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-align: left;
+  margin-right: auto;
+  margin-left: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+/* Navigation styles */
+.desktop-nav {
+  display: none;
+  gap: var(--spacing-lg);
+  align-items: center;
+  margin-left: auto; /* This pushes the nav to the right */
+}
+
+.desktop-nav a,
+.mobile-nav a {
+  margin-left: var(--spacing-lg);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease; /* Smooth transition for all changes */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  position: relative; /* Added for underline animation */
+}
+
+.desktop-nav a::after,
+.mobile-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--text-primary);
+  transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.mobile-nav a:hover::after {
+  width: 100%;
+}
+
+.desktop-nav a:hover,
+.mobile-nav a:hover {
+  color: var(--text-secondary);
+  transform: translateY(-1px); /* Slight lift effect */
+}
+
+.menu-toggle {
+  margin-left: auto; /* This pushes the menu toggle to the right on mobile */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md) 0;
+  gap: var(--spacing-md);  /* Consistent spacing between nav items */
+}
+
+.mobile-nav a {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* Main content layout */
+main {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacing-lg);
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;  /* Center content on mobile */
+  text-align: left;
+  padding-left: var(--spacing-lg);
+}
+
+/* Typography */
+h1 {
+  font-size: 4.5rem;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;  /* Improved readability */
+}
+
+h1 span {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-top: var(--spacing-sm);
+}
+
+p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;  /* Improved readability */
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Interactive elements */
+.cta {
+  background-color: var(--text-primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;  /* Smooth transitions for all changes */
+  
+  /* Add subtle depth */
+  box-shadow: 0 2px 4px var(--text-primary);
+}
+
+.cta:hover {
+  background-color: var(--text-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--text-secondary);
+}
+
+/* Trust section */
+.trust-badges {
+  text-align: left;
+  margin-top: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-md);  /* Consistent spacing */
+}
+
+.trust-badges p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.badges {
+  display: flex;
+  align-items: center; /* Center badges vertically */
+  justify-content: center; /* Center badges horizontally */
+  gap: var(--spacing-md);  /* Consistent spacing */
+}
+
+.badge {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: var(--kraft-accent);
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+/* Visual section */
+.visual {
+  margin-top: var(--spacing-xl);
+  position: relative;
+}
+
+.visual svg {
+  position: relative;
+  width: 80%;
+  z-index: 0;
+}
+
+.visual .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%; /* Makes the icon 1.5x its original size */
+  height: auto;
+  z-index: 1; /* Ensures the icon appears above the blob */
+  transition: transform 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.visual .icon:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* Scale up while maintaining center position */
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .topfold {
+    padding: var(--spacing-xl);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: var(--spacing-lg);  /* Consistent spacing */
+  }
+
+  main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-xl);
+    gap: var(--spacing-xl);  /* Space between content and visual */
+  }
+
+  .content,
+  .visual {
+    width: 48%;
+  }
+
+  .visual {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  header {
+    margin: calc(var(--spacing-xl) * -1);
+    margin-bottom: calc(var(--spacing-xl) + 20px);
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+  
+  .desktop-nav a {
+    font-size: 1.15rem;
+  }
+
+  .login-btn {
+    margin-left: var(--spacing-lg);
+  }
+}
+
+/* Add these new styles */
+.login-btn {
+  background: transparent;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: var(--text-primary);
+  color: var(--kraft-bg);
+}
+
