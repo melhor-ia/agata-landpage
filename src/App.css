@@ -1,38 +1,44 @@
+/* Main app container */
 .App {
   text-align: center;
+  background-color: var(--kraft-bg);  /* Kraft paper background */
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
+/* Animation preferences */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Global typography styles */
+h1 {
+  color: var(--text-primary); /* Ensure text uses --text-primary */
+  font-size: 3rem;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
 }
 
-.App-link {
-  color: #61dafb;
+p {
+  color: var(--text-secondary); /* Change text color to --text-secondary */
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  /* Existing colors */
+  --kraft-bg: #e0d1b9;      /* Main background color */
+  --kraft-accent: #c9baa1;  /* Secondary background color */
+  --color-prim: #19120b;  /* Very dark brown for headings */
+  --color-seco: #555;   /* Medium gray for body text */
+  
+  /* Add modal-specific variables */
+  --modal-overlay: var(--color-prim); /* Background overlay color for modals */
+  --modal-bg: var(--kraft-accent);  /* Background color for modals, using kraft accent color */
+  --modal-radius: 8px; /* Border radius for rounded corners of modals */
+  --modal-padding: 20px; /* Padding inside modals for spacing */
+  --spacing-sm: 0.7rem; /* Small spacing value for layout */
+  --spacing-md: 1.5rem; /* Medium spacing value for layout */
+  --spacing-lg: 2rem; /* Large spacing value for layout */
+  --spacing-xl: 0.5rem; /* Extra large spacing value for layout */
 }
