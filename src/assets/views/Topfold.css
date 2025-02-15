@@ -1,19 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-/* Global theme variables - consider moving these to App.css if used across components */
-:root {
-  --kraft-bg: #e0d1b9;      /* Main background color */
-  --kraft-accent: #d0c1a9;  /* Secondary background color */
-  --color-prim: #333;     /* Primary text color */
-  --color-seco: #555;   /* Secondary text color */
-  
-  /* Add new variables for consistent spacing */
-  --spacing-sm: 0.7rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 0.5rem;
-}
-
 /* Component styles */
 .topfold {
   font-family: Arial, sans-serif;
