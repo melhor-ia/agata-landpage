@@ -4,22 +4,21 @@
 :root {
   --kraft-bg: #e0d1b9;      /* Main background color */
   --kraft-accent: #d0c1a9;  /* Secondary background color */
-  --text-primary: #fb1515;     /* Primary text color */
-  --text-secondary: #e90000;   /* Secondary text color */
+  --color-prim: #333;     /* Primary text color */
+  --color-seco: #555;   /* Secondary text color */
   
   /* Add new variables for consistent spacing */
-  --spacing-sm: 0.5rem;
+  --spacing-sm: 0.7rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
+  --spacing-xl: 0.5rem;
 }
 
 /* Component styles */
 .topfold {
   font-family: Arial, sans-serif;
   background-color: var(--kraft-bg);
-  color: var(--text-primary);
-  min-height: 110vh;
+  color: var(--color-prim);
   padding: var(--spacing-lg);
 }
 
@@ -30,10 +29,10 @@ header {
   background-color: var(--kraft-accent);
   padding: var(--spacing-md) var(--spacing-lg);
   margin: calc(var(--spacing-md) * -1);
-  margin-bottom: var(--spacing-lg);
   position: relative;
 }
 
+/* Add this rule for header::after */
 header::after {
   content: '';
   position: absolute;
@@ -52,7 +51,7 @@ header::after {
   text-align: left;
   margin-right: auto;
   margin-left: var(--spacing-lg);
-  color: var(--text-primary);
+  color: var(--color-prim);
 }
 
 /* Navigation styles */
@@ -66,9 +65,8 @@ header::after {
 .desktop-nav a,
 .mobile-nav a {
   margin-left: var(--spacing-lg);
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: all 0.3s ease; /* Smooth transition for all changes */
+  color: var(--color-prim);
+  text-decoration: none; /* Smooth transition for all changes */
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: capitalize;
@@ -83,7 +81,7 @@ header::after {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: var(--text-primary);
+  background-color: var(--color-prim);
   transition: width 0.3s ease;
 }
 
@@ -94,7 +92,6 @@ header::after {
 
 .desktop-nav a:hover,
 .mobile-nav a:hover {
-  color: var(--text-secondary);
   transform: translateY(-1px); /* Slight lift effect */
 }
 
@@ -124,56 +121,104 @@ header::after {
 main {
   display: flex;
   flex-direction: column;
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+}
+
+/* Add this rule for desktop */
+@media (min-width: 768px) {
+  .content {
+    padding-left: var(--spacing-lg);
+  }
 }
 
 .content {
   max-width: 600px;
   margin: 0 auto;  /* Center content on mobile */
-  text-align: left;
-  padding-left: var(--spacing-lg);
+  text-align: left; /* Center text within the content */
 }
 
 /* Typography */
-h1 {
-  font-size: 4.5rem;
+h1 reg {
+  font-size: 3.5rem; /* Desktop size */
+  color: var(--color-prim);
   margin-bottom: var(--spacing-md);
   line-height: 1.2;  /* Improved readability */
 }
 
 h1 span {
   display: block;
-  font-size: 1.25rem;
-  font-weight: normal;
+  color: var(--color-seco);
+  font-size: 1.70rem; /* Desktop size */
   margin-top: var(--spacing-sm);
 }
 
 p {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
+  font-size: 1.25rem; /* Desktop size */
+  color: var(--color-seco);
   line-height: 1.6;  /* Improved readability */
   margin-bottom: var(--spacing-lg);
 }
 
+/* Responsive styles for mobile */
+@media (max-width: 767px) {
+  h1 reg {
+    font-size: 2rem; /* Mobile size */
+  }
+
+  h1 span {
+    font-size: 1.3rem; /* Mobile size */
+  }
+
+  p {
+    font-size: 0.8rem; /* Mobile size */
+  }
+
+  /* Add this rule for p elements inside .content */
+  .content {
+    text-align: center;/* Mobile size */
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  .topfold {
+    padding: calc(var(--spacing-lg) / 2); /* Halve the vertical padding */
+  }
+
+  .trust-badges{
+    align-self: center;
+    align-items: center;
+    p {text-align: right;}
+  }
+
+  main {
+    flex-direction: column; /* Ensure column layout */
+  }
+
+  .visual {
+    order: -1; /* Move visual before content */
+  }
+}
+
 /* Interactive elements */
 .cta {
-  background-color: var(--text-primary);
+  background-color: var(--color-prim);
   color: white;
   border: none;
   padding: var(--spacing-sm) var(--spacing-lg);
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;  /* Smooth transitions for all changes */
+  transition: all 0.3s ease;
   
   /* Add subtle depth */
-  box-shadow: 0 2px 4px var(--text-primary);
+  box-shadow: 0 2px 4px var(--color-prim);
 }
 
 .cta:hover {
-  background-color: var(--text-secondary);
+  background-color: var(--color-seco);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--text-secondary);
+  box-shadow: 0 4px 8px var(--color-seco);
 }
 
 /* Trust section */
@@ -220,6 +265,7 @@ p {
 .visual svg {
   position: relative;
   width: 80%;
+  max-width: 600px;
   z-index: 0;
 }
 
@@ -229,6 +275,7 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 35%; /* Makes the icon 1.5x its original size */
+  max-width: 250px;
   height: auto;
   z-index: 1; /* Ensures the icon appears above the blob */
   transition: transform 0.2s ease; /* Smooth transition for hover effect */
@@ -286,14 +333,15 @@ p {
 
   .login-btn {
     margin-left: var(--spacing-lg);
+    margin-right: var(--spacing-lg);
   }
 }
 
 /* Add these new styles */
 .login-btn {
   background: transparent;
-  border: 2px solid var(--text-primary);
-  color: var(--text-primary);
+  border: 2px solid var(--color-prim);
+  color: var(--color-prim);
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
   font-size: 1rem;
@@ -303,7 +351,11 @@ p {
 }
 
 .login-btn:hover {
-  background: var(--text-primary);
+  background: var(--color-prim);
   color: var(--kraft-bg);
 }
 
+/* Temporary test to see if the variable is applied */
+body {
+  color: var(--color-prim); /* This should change the text color of the body */
+}
