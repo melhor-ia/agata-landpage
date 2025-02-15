@@ -1,0 +1,228 @@
+/* Main section container */
+.transform-section {
+  padding: var(--spacing-lg);
+  background-color: var(--color-prim);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+}
+
+/* Section title styling */
+.section-title {
+  color: var(--kraft-bg);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cards container layout */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* Timeline line */
+.cards-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--kraft-bg);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* Individual card styling */
+.transform-card {
+  position: relative;
+  width: 480px;
+  height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 2;
+  margin-bottom: calc(var(--spacing-lg) * 2);
+}
+
+/* Card hole effect */
+.transform-card::before {
+  content: '';
+  position: absolute;
+  max-height: 360px;
+  inset: 0;
+  background: var(--color-prim);
+  border-radius: 12px;
+  z-index: 1;
+}
+
+/* Card content styling */
+.card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Before content - Top card */
+.before {
+  background-color: var(--kraft-accent);
+  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.before-content {
+  padding: var(--spacing-lg);
+  max-height: 220px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--kraft-bg);
+  color: var(--color-prim);
+}
+
+/* After content - Bottom card */
+.after {
+  background-color: var(--color-prim);
+  z-index: 2;
+}
+
+.after-content {
+  padding: var(--spacing-lg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--kraft-accent);
+}
+
+/* Card title styling */
+.transform-card h3 {
+  color: var(--color-prim);
+  font-size: 1.5rem;
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  width: 100%;
+  font-weight: 600;
+}
+
+/* Card text styling */
+.transform-card p {
+  color: var(--color-prim);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: var(--spacing-sm);
+  text-align: center;
+}
+
+/* Icon styling */
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--color-prim);
+}
+
+/* Hover animations - Simple slide up with scale */
+.transform-card:hover .before {
+  transform: translateY(-80px) scale(0.95);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+
+/* Uneven staggered positioning */
+.transform-card:nth-child(1) { margin-left: 5rem; }
+.transform-card:nth-child(2) { margin-left: 30rem; }
+.transform-card:nth-child(3) { margin-left: 10rem; }
+.transform-card:nth-child(4) { margin-left: 23rem; }
+.transform-card:nth-child(5) { margin-left: 9rem; }
+
+/* Animation on scroll */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transform-card {
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+/* Stagger animation for cards */
+.transform-card:nth-child(1) { animation-delay: 0.1s; }
+.transform-card:nth-child(2) { animation-delay: 0.2s; }
+.transform-card:nth-child(3) { animation-delay: 0.3s; }
+.transform-card:nth-child(4) { animation-delay: 0.4s; }
+.transform-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Day counter */
+
+/* Add this rule for transform-section::after */
+.transform-section::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%2319120b' opacity='.25'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%2319120b' opacity='.5'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%2319120b'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  overflow: visible;
+}
+
+/* Adjust vectorial element to be at the top edge */
+.vectorial-element {
+  width: 100%;
+  height: 20px; /* Adjust height as needed */
+  background-color: var(--kraft-accent);
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%2319120b' opacity='.25'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%2319120b' opacity='.5'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%2319120b'%3E%3C/path%3E%3C/svg%3E");
+  opacity: 1;
+  position: relative;
+  top: -20;
+  left: 0;
+  z-index: 3;
+  rotate: 180deg;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

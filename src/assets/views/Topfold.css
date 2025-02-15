@@ -6,6 +6,7 @@
   background-color: var(--kraft-bg);
   color: var(--color-prim);
   padding: var(--spacing-lg);
+  margin-bottom: 10px;
 }
 
 header {

@@ -28,7 +28,7 @@ p {
 :root {
   /* Existing colors */
   --kraft-bg: #e0d1b9;      /* Main background color */
-  --kraft-accent: #d0c1a9;  /* Secondary background color */
+  --kraft-accent: #c9baa1;  /* Secondary background color */
   --color-prim: #19120b;  /* Very dark brown for headings */
   --color-seco: #555;   /* Medium gray for body text */
   
